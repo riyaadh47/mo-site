@@ -259,7 +259,7 @@ main {
     flex-direction: column;
     justify-content: center;
     height: 550px;
-    background-image: url("../assets/main-header-image.png");
+    background-image: url("../assets/main-header-image.jpg");
     background-repeat: no-repeat;
     background-position-x: center; }
     main .hero-banner .content {
@@ -405,7 +405,7 @@ main {
     background-size: cover;
     background-position-x: center;
     background-position-y: center;
-    background-image: url("../assets/award-winning-platform-strip.png"); }
+    background-image: url("../assets/award-winning-platform-strip.jpg"); }
     @media only screen and (max-width: 1024px) {
       main .awards-container {
         padding-top: 40px;
