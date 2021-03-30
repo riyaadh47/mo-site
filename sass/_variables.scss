@@ -1,0 +1,145 @@
+// Global Styles
+$site-width: 			1440px;
+$tablet-lrg:			1280px;
+$tablet-md:				1024px;
+$tablet-sm: 	 		768px;
+$mobile:					480px;
+
+//Colours
+$pink: 						#F12953;
+$dark-pink: 			#D3133B;
+$white:						#fff;
+$navy-blue: 			#1A2939;
+$grey:						#4A4A4A;
+$black:						#000;
+
+// Fonts
+$primary-font: 		'Lato', sans-serif;
+$secondary-font: 	'Montserrat', sans-serif;
+
+//Typography
+$heading-one:					55;
+$heading-two:					45;
+$heading-three:				32;
+$heading-four:				32;
+$heading-five:				15;
+$heading-six: 				9;
+$para:								16;
+
+// Mixins
+@mixin flex-direction($values) {
+	-webkit-flex-direction: $values;
+	flex-direction: $values;
+}
+
+@mixin flex-flow($values) {
+	-webkit-flex-flow: $values;
+	flex-flow: $values;
+}
+
+@mixin align-items($values) {
+	-webkit-align-items: $values;
+	align-items: $values;
+}
+
+@mixin justify-content($values) {
+	-webkit-justify-content: $values;
+	justify-content: $values;
+}
+
+@mixin flex($values) {
+	-webkit-flex: $values;
+	flex: $values;
+}
+
+@mixin display-flex() {
+	display: -webkit-flex;
+	display: flex;
+}
+
+
+@mixin border-box {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+//Transitions
+
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+     -moz-transition: $transition-property $transition-time $method;
+      -ms-transition: $transition-property $transition-time $method;
+       -o-transition: $transition-property $transition-time $method;
+          transition: $transition-property $transition-time $method;
+}
+
+@mixin transitionfixed {
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+      -ms-transition: all 250ms ease-in-out;
+       -o-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
+}
+
+
+@mixin transitionlin {
+  -webkit-transition: all 250ms linear;
+     -moz-transition: all 250ms linear;
+      -ms-transition: all 250ms linear;
+       -o-transition: all 250ms linear;
+          transition: all 250ms linear;
+}
+
+@mixin gradient($leftColor, $rightColor) {
+  background: $leftColor;
+  background: -moz-linear-gradient(left, $leftColor 1%, $rightColor 100%);
+  background: -webkit-linear-gradient(left, $leftColor 1%,$rightColor 100%);
+  background: linear-gradient(to right, $leftColor 1%,$rightColor 100%);
+}
+
+@mixin diagonalGradient($deg, $bottomColor, $topColor) {
+  background-image: -moz-linear-gradient($deg, $topColor 0%, $bottomColor 70%);
+  background-image: -webkit-linear-gradient($deg, $topColor 0%,$bottomColor 70%);
+  background-image: linear-gradient($deg, $topColor 0%,$bottomColor 70%);
+  background-repeat: no-repeat;
+}
+
+
+// Pixels to REM font size
+$doc-font-size: 16;
+
+@mixin font-size($size) {
+  font-size: 0px + $size;
+  font-size: 0rem + $size / $doc-font-size;
+}
+
+
+// Pixels to REM
+$baseline-px: 16px;
+@mixin rem($property, $px-values) {
+
+  $baseline-rem: $baseline-px / 1rem;
+
+  @if type-of($px-values) == "number" {
+    #{$property}: $px-values / $baseline-rem; }
+    @else {
+
+  
+  $rem-values: unquote("");
+  @each $value in $px-values {
+
+  
+  @if $value == 0px or type-of($value) == "string" or type-of($value) == "color" {
+    $rem-values: append($rem-values, $value); }
+    @else {
+      $rem-values: append($rem-values, $value / $baseline-rem); } }
+  #{$property}: $rem-values; }
+}
+
+
+@mixin breakpoint($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}
